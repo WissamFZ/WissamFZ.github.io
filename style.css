@@ -644,3 +644,47 @@ body.site-ready .stats {
     animation: none;
   }
 }
+
+/* 🎀 Scrapbook photo rotations */
+
+.gallery-grid .photo:nth-child(odd) {
+  transform: rotate(-1.5deg);
+}
+
+.gallery-grid .photo:nth-child(even) {
+  transform: rotate(1.5deg);
+}
+
+.gallery-grid .photo:nth-child(3n) {
+  transform: rotate(-2deg);
+}
+
+.gallery-grid .photo:nth-child(4n) {
+  transform: rotate(2.2deg);
+}
+
+/* Keep the scrapbook rotation after the reveal animation */
+
+.gallery-grid .photo:nth-child(odd).visible {
+  transform: rotate(-1.5deg) translateY(0);
+}
+
+.gallery-grid .photo:nth-child(even).visible {
+  transform: rotate(1.5deg) translateY(0);
+}
+
+.gallery-grid .photo:nth-child(3n).visible {
+  transform: rotate(-2deg) translateY(0);
+}
+
+.gallery-grid .photo:nth-child(4n).visible {
+  transform: rotate(2.2deg) translateY(0);
+}
+
+/* Hover makes the memory pop forward */
+
+.gallery-grid .photo:hover {
+  transform: rotate(0deg) translateY(-8px) scale(1.035);
+  z-index: 5;
+  box-shadow: 0 22px 45px rgba(190,70,125,.18);
+}
