@@ -156,3 +156,40 @@ setTimeout(() => {
 }, 1500);
   });
 }
+/* ==========================================
+   SCROLL REVEAL SYSTEM
+   ========================================== */
+
+const revealElements = document.querySelectorAll(
+  ".section-heading, .timeline article, .photo, .note"
+);
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+
+        // Once revealed, we don't need to watch it anymore
+        revealObserver.unobserve(entry.target);
+      }
+
+    });
+  },
+  {
+    threshold: 0.15
+  }
+);
+
+revealElements.forEach((element) => {
+
+  // Give section headings the general reveal animation
+  if (
+    element.classList.contains("section-heading")
+  ) {
+    element.classList.add("reveal");
+  }
+
+  revealObserver.observe(element);
+});
