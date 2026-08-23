@@ -40,3 +40,55 @@ document.getElementById("bow").addEventListener("click",()=>{
 const style=document.createElement("style");
 style.textContent="@keyframes float{to{transform:translate(${(Math.random()-.5)*300}px,-${150+Math.random()*250}px) rotate(30deg);opacity:0}}";
 document.head.appendChild(style);
+/* =================================
+   PRISTINE BABY — OPENING ANIMATION
+   ================================= */
+
+const welcomeScreen = document.getElementById("welcomeScreen");
+const enterButton = document.getElementById("enterButton");
+const particleContainer = document.querySelector(".welcome-particles");
+
+const particleSymbols = ["♡", "✦", "✧", "🎀", "·"];
+
+function createWelcomeParticle() {
+  if (!particleContainer) return;
+
+  const particle = document.createElement("span");
+
+  particle.className = "welcome-particle";
+  particle.textContent =
+    particleSymbols[Math.floor(Math.random() * particleSymbols.length)];
+
+  particle.style.left = `${Math.random() * 100}%`;
+  particle.style.bottom = `${-10 - Math.random() * 20}%`;
+  particle.style.fontSize = `${12 + Math.random() * 22}px`;
+  particle.style.animationDuration = `${5 + Math.random() * 6}s`;
+  particle.style.setProperty(
+    "--drift",
+    `${-80 + Math.random() * 160}px`
+  );
+
+  particleContainer.appendChild(particle);
+
+  setTimeout(() => {
+    particle.remove();
+  }, 12000);
+}
+
+const particleInterval = setInterval(createWelcomeParticle, 350);
+
+for (let i = 0; i < 12; i++) {
+  setTimeout(createWelcomeParticle, i * 180);
+}
+
+if (enterButton) {
+  enterButton.addEventListener("click", () => {
+    welcomeScreen.classList.add("opening");
+
+    clearInterval(particleInterval);
+
+    setTimeout(() => {
+      welcomeScreen.remove();
+    }, 1100);
+  });
+}
