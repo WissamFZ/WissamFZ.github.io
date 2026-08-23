@@ -144,11 +144,15 @@ if (enterButton) {
     }, 1400);
 
     // Finally remove the welcome screen
-    setTimeout(() => {
-      welcomeScreen.remove();
+setTimeout(() => {
+  welcomeScreen.remove();
 
-      // Make sure the homepage is completely visible
-      document.body.style.overflow = "";
-    }, 1500);
+  // Tell the homepage to start its entrance animation
+  document.body.classList.add("site-ready");
+
+  // Make sure the homepage can scroll
+  document.body.style.overflow = "";
+
+}, 1500);
   });
 }
