@@ -27,3 +27,248 @@ h1 span{color:var(--hot)}h2{font-size:clamp(32px,5vw,52px);margin:0 0 14px}.hero
 footer{text-align:center;padding:30px;color:#ad8295;font-size:12px}
 .modal{display:none;position:fixed;inset:0;z-index:50;background:rgba(60,25,43,.82);place-items:center;padding:30px}.modal.show{display:grid}.modal img{max-width:min(900px,92vw);max-height:78vh;border-radius:22px;box-shadow:0 20px 80px #0005}.modal p{color:#fff;margin:12px}.close{position:absolute;right:25px;top:18px;border:0;background:#fff;border-radius:50%;width:42px;height:42px;font-size:28px;cursor:pointer}
 @media(max-width:700px){nav{display:none}.gallery-grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:1fr}.hero-card{padding:55px 20px 40px}.note{padding:42px 25px}}
+/* ================================
+   PRISTINE BABY — OPENING SCREEN
+   ================================ */
+
+.welcome-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 35%, #fff 0%, #fff4f9 32%, #ffdce9 100%);
+  transition:
+    opacity 1s ease,
+    visibility 1s ease,
+    transform 1s ease;
+}
+
+.welcome-screen::before,
+.welcome-screen::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.welcome-screen::before {
+  width: 420px;
+  height: 420px;
+  background: #ffc4dc;
+  filter: blur(80px);
+  opacity: .45;
+  top: -140px;
+  left: -120px;
+}
+
+.welcome-screen::after {
+  width: 360px;
+  height: 360px;
+  background: #ff9fc5;
+  filter: blur(90px);
+  opacity: .25;
+  bottom: -140px;
+  right: -100px;
+}
+
+.welcome-screen.opening {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+.welcome-content {
+  position: relative;
+  z-index: 2;
+  width: min(700px, 90vw);
+  text-align: center;
+  animation: welcomeAppear 1.2s ease both;
+}
+
+.welcome-bow {
+  font-size: 70px;
+  margin-bottom: 15px;
+  animation:
+    bowFloat 3s ease-in-out infinite,
+    bowAppear 1s .2s ease both;
+  filter: drop-shadow(0 12px 12px rgba(255, 80, 145, .2));
+}
+
+.welcome-small {
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #c75a88;
+  animation: fadeUp .8s .3s ease both;
+}
+
+.welcome-title {
+  margin: 0;
+  font-family: Pacifico, cursive;
+  font-size: clamp(52px, 9vw, 90px);
+  line-height: 1.1;
+  font-weight: 400;
+  color: #4b2b3c;
+  animation: fadeUp .9s .45s ease both;
+}
+
+.welcome-title span {
+  color: #ff4f98;
+}
+
+.welcome-subtitle {
+  margin: 18px 0 30px;
+  color: #876878;
+  font-size: 16px;
+  animation: fadeUp .9s .6s ease both;
+}
+
+.enter-button {
+  border: 0;
+  padding: 14px 27px;
+  border-radius: 999px;
+  background: #ff4f98;
+  color: white;
+  font-family: Fredoka, sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow:
+    0 12px 30px rgba(255, 79, 152, .25),
+    0 0 0 0 rgba(255, 79, 152, .3);
+  animation:
+    fadeUp .9s .8s ease both,
+    buttonPulse 2.2s 1.8s infinite;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.enter-button:hover {
+  transform: translateY(-4px) scale(1.04);
+  box-shadow: 0 16px 35px rgba(255, 79, 152, .35);
+}
+
+.enter-button:active {
+  transform: scale(.96);
+}
+
+.welcome-bottom {
+  margin-top: 35px;
+  font-size: 11px;
+  color: #b58298;
+  animation: fadeUp .9s 1s ease both;
+}
+
+/* Floating decorations */
+
+.welcome-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.welcome-particle {
+  position: absolute;
+  color: #ff70aa;
+  opacity: 0;
+  animation: particleFloat linear forwards;
+}
+
+/* Animations */
+
+@keyframes welcomeAppear {
+  from {
+    opacity: 0;
+    transform: scale(.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bowAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(.7) rotate(-12deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+
+@keyframes bowFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(-3deg);
+  }
+
+  50% {
+    transform: translateY(-9px) rotate(3deg);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes buttonPulse {
+  0%, 100% {
+    box-shadow:
+      0 12px 30px rgba(255, 79, 152, .25),
+      0 0 0 0 rgba(255, 79, 152, .3);
+  }
+
+  50% {
+    box-shadow:
+      0 12px 30px rgba(255, 79, 152, .25),
+      0 0 0 10px rgba(255, 79, 152, 0);
+  }
+}
+
+@keyframes particleFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(.7) rotate(0);
+  }
+
+  15% {
+    opacity: .7;
+  }
+
+  85% {
+    opacity: .7;
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translateY(-110vh)
+      translateX(var(--drift))
+      scale(1.15)
+      rotate(25deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .welcome-screen *,
+  .welcome-screen {
+    animation: none !important;
+    transition: none !important;
+  }
+}
