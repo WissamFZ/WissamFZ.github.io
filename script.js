@@ -83,12 +83,72 @@ for (let i = 0; i < 12; i++) {
 
 if (enterButton) {
   enterButton.addEventListener("click", () => {
-    welcomeScreen.classList.add("opening");
 
+    // Prevent double clicking
+    if (welcomeScreen.classList.contains("leaving")) return;
+
+    // Stop generating particles
     clearInterval(particleInterval);
 
+    // Start the big transition
+    welcomeScreen.classList.add("leaving");
+
+    // Create the little heart explosion
+    const symbols = ["♡", "♥", "✦", "✧", "🎀"];
+
+    for (let i = 0; i < 28; i++) {
+
+      const heart = document.createElement("span");
+
+      heart.className = "transition-heart";
+
+      heart.textContent =
+        symbols[Math.floor(Math.random() * symbols.length)];
+
+      // Random direction
+      const angle = Math.random() * Math.PI * 2;
+      const distance = 140 + Math.random() * 420;
+
+      const x = Math.cos(angle) * distance;
+      const y = Math.sin(angle) * distance;
+
+      heart.style.setProperty("--x", `${x}px`);
+      heart.style.setProperty("--y", `${y}px`);
+      heart.style.setProperty(
+        "--rotation",
+        `${-45 + Math.random() * 90}deg`
+      );
+
+      heart.style.fontSize =
+        `${12 + Math.random() * 25}px`;
+
+      heart.style.animationDelay =
+        `${Math.random() * .18}s`;
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 1500);
+    }
+
+    // Soft pink/white flash
+    const flash = document.createElement("div");
+
+    flash.className = "transition-flash";
+
+    document.body.appendChild(flash);
+
+    setTimeout(() => {
+      flash.remove();
+    }, 1400);
+
+    // Finally remove the welcome screen
     setTimeout(() => {
       welcomeScreen.remove();
-    }, 1100);
+
+      // Make sure the homepage is completely visible
+      document.body.style.overflow = "";
+    }, 1500);
   });
 }
