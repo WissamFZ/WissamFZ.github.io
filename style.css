@@ -272,3 +272,187 @@ footer{text-align:center;padding:30px;color:#ad8295;font-size:12px}
     transition: none !important;
   }
 }
+/* ==========================================
+   EPIC ENTER TRANSITION
+   ========================================== */
+
+.welcome-screen.leaving {
+  animation: screenExit 1.5s cubic-bezier(.7, 0, .2, 1) forwards;
+}
+
+.welcome-screen.leaving .welcome-content {
+  animation: contentExit 1.05s cubic-bezier(.6, 0, .2, 1) forwards;
+}
+
+.welcome-screen.leaving .welcome-bow {
+  animation: bowFlyAway 1.15s cubic-bezier(.2, .8, .2, 1) forwards;
+}
+
+.welcome-screen.leaving .welcome-particle {
+  animation-play-state: paused;
+}
+
+.welcome-screen.leaving .welcome-small,
+.welcome-screen.leaving .welcome-title,
+.welcome-screen.leaving .welcome-subtitle,
+.welcome-screen.leaving .enter-button,
+.welcome-screen.leaving .welcome-bottom {
+  animation: textDisappear .55s ease forwards;
+}
+
+/* Giant pink glow that expands from the middle */
+
+.welcome-screen::before {
+  transition: transform 1.3s cubic-bezier(.2, .8, .2, 1);
+}
+
+.welcome-screen.leaving::before {
+  transform: scale(4);
+}
+
+/* Screen itself */
+
+@keyframes screenExit {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  45% {
+    opacity: 1;
+    transform: scale(1.025);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.08);
+    visibility: hidden;
+  }
+}
+
+/* Everything in the middle zooms away */
+
+@keyframes contentExit {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  35% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.35);
+  }
+}
+
+/* 🎀 Bow flies upward */
+
+@keyframes bowFlyAway {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0);
+  }
+
+  25% {
+    opacity: 1;
+    transform: translateY(-18px) scale(1.12) rotate(-8deg);
+  }
+
+  65% {
+    opacity: .9;
+    transform: translateY(-100px) scale(1.3) rotate(12deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-280px) scale(.4) rotate(35deg);
+  }
+}
+
+@keyframes textDisappear {
+  to {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+}
+
+/* Burst particles */
+
+.transition-heart {
+  position: fixed;
+  z-index: 10001;
+  left: 50%;
+  top: 50%;
+  pointer-events: none;
+  font-size: 20px;
+  color: #ff4f98;
+  animation: heartBurst 1.25s cubic-bezier(.15, .75, .25, 1) forwards;
+}
+
+@keyframes heartBurst {
+  0% {
+    opacity: 0;
+    transform:
+      translate(-50%, -50%)
+      scale(.2)
+      rotate(0deg);
+  }
+
+  15% {
+    opacity: 1;
+    transform:
+      translate(-50%, -50%)
+      scale(1.2)
+      rotate(-8deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(
+        calc(-50% + var(--x)),
+        calc(-50% + var(--y))
+      )
+      scale(.7)
+      rotate(var(--rotation));
+  }
+}
+
+/* A final soft flash */
+
+.transition-flash {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at center,
+    rgba(255,255,255,1) 0%,
+    rgba(255,214,231,.85) 30%,
+    rgba(255,151,194,.35) 60%,
+    transparent 80%
+  );
+  opacity: 0;
+  animation: flashTransition 1.25s ease forwards;
+}
+
+@keyframes flashTransition {
+  0% {
+    opacity: 0;
+    transform: scale(.4);
+  }
+
+  35% {
+    opacity: .9;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+}
