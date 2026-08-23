@@ -456,3 +456,191 @@ footer{text-align:center;padding:30px;color:#ad8295;font-size:12px}
     transform: scale(1.8);
   }
 }
+/* ==========================================
+   HOMEPAGE ENTRANCE ANIMATIONS
+   ========================================== */
+
+/* Everything starts slightly hidden */
+
+body:not(.site-ready) .nav {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+body:not(.site-ready) .hero-card {
+  opacity: 0;
+  transform: translateY(45px) scale(.96);
+}
+
+body:not(.site-ready) .stats {
+  opacity: 0;
+  transform: translateY(35px);
+}
+
+
+/* When the welcome screen finishes */
+
+body.site-ready .nav {
+  animation: navReveal .8s cubic-bezier(.2,.8,.2,1) forwards;
+  animation-delay: .05s;
+}
+
+body.site-ready .hero-card {
+  animation: heroReveal 1.1s cubic-bezier(.16,1,.3,1) forwards;
+  animation-delay: .15s;
+}
+
+body.site-ready .stats {
+  animation: statsReveal .9s cubic-bezier(.16,1,.3,1) forwards;
+  animation-delay: .45s;
+}
+
+
+/* Navbar */
+
+@keyframes navReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Main hero */
+
+@keyframes heroReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(45px) scale(.96);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.01);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+/* Stats */
+
+@keyframes statsReveal {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* ==========================================
+   SCROLL REVEALS
+   ========================================== */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(45px);
+  transition:
+    opacity .8s ease,
+    transform .8s cubic-bezier(.16,1,.3,1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* Cards appear individually */
+
+.timeline article,
+.photo {
+  opacity: 0;
+  transform: translateY(30px) scale(.97);
+  transition:
+    opacity .7s ease,
+    transform .7s cubic-bezier(.16,1,.3,1);
+}
+
+.timeline article.visible,
+.photo.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+
+/* Slight stagger between timeline cards */
+
+.timeline article:nth-child(2) {
+  transition-delay: .1s;
+}
+
+.timeline article:nth-child(3) {
+  transition-delay: .2s;
+}
+
+
+/* Photo hover */
+
+.photo {
+  transition:
+    opacity .7s ease,
+    transform .7s cubic-bezier(.16,1,.3,1),
+    box-shadow .3s ease;
+}
+
+.photo:hover {
+  transform: translateY(-8px) rotate(0deg) scale(1.025);
+  box-shadow: 0 22px 45px rgba(190,70,125,.18);
+}
+
+
+/* Note reveal */
+
+.note {
+  opacity: 0;
+  transform: translateY(45px) scale(.97);
+  transition:
+    opacity .9s ease,
+    transform .9s cubic-bezier(.16,1,.3,1);
+}
+
+.note.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+
+/* Respect reduced motion */
+
+@media (prefers-reduced-motion: reduce) {
+  body:not(.site-ready) .nav,
+  body:not(.site-ready) .hero-card,
+  body:not(.site-ready) .stats,
+  .reveal,
+  .timeline article,
+  .photo,
+  .note {
+    opacity: 1;
+    transform: none;
+  }
+
+  body.site-ready .nav,
+  body.site-ready .hero-card,
+  body.site-ready .stats {
+    animation: none;
+  }
+}
