@@ -1054,7 +1054,7 @@ body.site-ready .stats {
    🎀 PRISTINE'S SCRAPBOOK WALL
    ========================================== */
 
-.gallery-section {
+#gallery {
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -1064,7 +1064,7 @@ body.site-ready .stats {
 
 /* Soft scrapbook paper */
 
-.gallery-section::before {
+#gallery::before {
   content: "";
   position: absolute;
   z-index: -2;
@@ -1084,7 +1084,7 @@ body.site-ready .stats {
 
 /* Decorative dotted border */
 
-.gallery-section::after {
+#gallery::after {
   content: "";
   position: absolute;
   z-index: -1;
@@ -1101,13 +1101,13 @@ body.site-ready .stats {
    ✨ SCRAPBOOK STICKERS
    ========================================== */
 
-.gallery-section {
+#gallery {
   --sticker-pink: #ff82b5;
 }
 
 /* Top-left bow */
 
-.gallery-section .gallery-grid::before {
+#gallery .gallery-grid::before {
   content: "🎀";
   position: absolute;
 
@@ -1126,7 +1126,7 @@ body.site-ready .stats {
 
 /* Sparkle */
 
-.gallery-section .gallery-grid::after {
+#gallery .gallery-grid::after {
   content: "✦";
   position: absolute;
 
@@ -1144,13 +1144,13 @@ body.site-ready .stats {
    📎 LITTLE SCRAPBOOK NOTES
    ========================================== */
 
-.gallery-section .section-heading {
+#gallery .section-heading {
   position: relative;
 }
 
 /* Tiny decorative line */
 
-.gallery-section .section-heading::after {
+#gallery .section-heading::after {
   content: "♡  ✦  ♡";
 
   display: block;
@@ -1271,22 +1271,22 @@ body.site-ready .stats {
 
 @media (max-width: 600px) {
 
-  .gallery-section::before {
+  #gallery::before {
     inset: 10px 0;
     border-radius: 25px;
   }
 
-  .gallery-section::after {
+  #gallery::after {
     inset: 20px 8px;
     border-radius: 20px;
   }
 
-  .gallery-section .gallery-grid::before {
+  #gallery .gallery-grid::before {
     font-size: 35px;
     left: 2%;
   }
 
-  .gallery-section .gallery-grid::after {
+  #gallery .gallery-grid::after {
     font-size: 25px;
     right: 2%;
   }
