@@ -5,6 +5,6 @@
 const photos = [
    {
     src: "photos/princy1.jpg",
-    title: "my favorite smile ♡"
+    title: "Prettiest Eyes ♡"
   }
 ];
