@@ -1050,3 +1050,245 @@ body.site-ready .stats {
   }
 
 }
+/* ==========================================
+   🎀 PRISTINE'S SCRAPBOOK WALL
+   ========================================== */
+
+.gallery-section {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-top: 70px;
+  padding-bottom: 90px;
+}
+
+/* Soft scrapbook paper */
+
+.gallery-section::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: 20px 0;
+  border-radius: 40px;
+
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.9) 0 2px, transparent 3px),
+    radial-gradient(circle at 80% 70%, rgba(255,255,255,.7) 0 2px, transparent 3px),
+    #fff4f8;
+
+  background-size: 45px 45px, 60px 60px, auto;
+
+  box-shadow:
+    inset 0 0 50px rgba(190,100,135,.06);
+}
+
+/* Decorative dotted border */
+
+.gallery-section::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 35px 15px;
+
+  border: 2px dashed rgba(232,126,165,.25);
+  border-radius: 32px;
+
+  pointer-events: none;
+}
+
+
+/* ==========================================
+   ✨ SCRAPBOOK STICKERS
+   ========================================== */
+
+.gallery-section {
+  --sticker-pink: #ff82b5;
+}
+
+/* Top-left bow */
+
+.gallery-section .gallery-grid::before {
+  content: "🎀";
+  position: absolute;
+
+  top: -25px;
+  left: 3%;
+
+  font-size: 48px;
+
+  transform: rotate(-12deg);
+
+  filter:
+    drop-shadow(0 6px 5px rgba(100,40,70,.12));
+
+  animation: stickerFloat 4s ease-in-out infinite;
+}
+
+/* Sparkle */
+
+.gallery-section .gallery-grid::after {
+  content: "✦";
+  position: absolute;
+
+  top: 35px;
+  right: 5%;
+
+  font-size: 32px;
+  color: #ff79ad;
+
+  animation: sparkleTwinkle 2s ease-in-out infinite;
+}
+
+
+/* ==========================================
+   📎 LITTLE SCRAPBOOK NOTES
+   ========================================== */
+
+.gallery-section .section-heading {
+  position: relative;
+}
+
+/* Tiny decorative line */
+
+.gallery-section .section-heading::after {
+  content: "♡  ✦  ♡";
+
+  display: block;
+
+  margin-top: 12px;
+
+  font-size: 14px;
+  letter-spacing: 7px;
+
+  color: #ef79a8;
+}
+
+
+/* ==========================================
+   🎀 POLAROID DECORATIONS
+   ========================================== */
+
+.gallery-grid .photo {
+  overflow: visible !important;
+}
+
+/* Make tape look more handmade */
+
+.gallery-grid .photo::before {
+  width: 82px;
+  height: 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,202,222,.82),
+      rgba(255,229,239,.72)
+    );
+
+  border: 1px solid rgba(255,255,255,.55);
+
+  opacity: .9;
+
+  box-shadow:
+    0 2px 5px rgba(120,50,80,.08);
+}
+
+/* Different tape positions */
+
+.gallery-grid .photo:nth-child(2)::before {
+  transform:
+    translateX(-50%)
+    rotate(5deg);
+}
+
+.gallery-grid .photo:nth-child(3)::before {
+  transform:
+    translateX(-50%)
+    rotate(-5deg);
+}
+
+.gallery-grid .photo:nth-child(4)::before {
+  transform:
+    translateX(-50%)
+    rotate(3deg);
+}
+
+
+/* ==========================================
+   💗 LITTLE HEART STICKERS
+   ========================================== */
+
+.gallery-grid .photo:nth-child(2)::after {
+  content: "♡";
+  color: #ff5f9f;
+  font-family: Georgia, serif;
+  font-size: 35px;
+}
+
+.gallery-grid .photo:nth-child(3)::after {
+  content: "✦";
+  color: #ff8db8;
+  font-size: 30px;
+}
+
+.gallery-grid .photo:nth-child(4)::after {
+  content: "♡";
+  color: #ff5f9f;
+  font-size: 32px;
+}
+
+
+/* ==========================================
+   ✨ ANIMATIONS
+   ========================================== */
+
+@keyframes stickerFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(-12deg);
+  }
+
+  50% {
+    transform: translateY(-7px) rotate(-7deg);
+  }
+}
+
+@keyframes sparkleTwinkle {
+  0%, 100% {
+    opacity: .35;
+    transform: scale(.8) rotate(0deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(20deg);
+  }
+}
+
+
+/* ==========================================
+   📱 MOBILE
+   ========================================== */
+
+@media (max-width: 600px) {
+
+  .gallery-section::before {
+    inset: 10px 0;
+    border-radius: 25px;
+  }
+
+  .gallery-section::after {
+    inset: 20px 8px;
+    border-radius: 20px;
+  }
+
+  .gallery-section .gallery-grid::before {
+    font-size: 35px;
+    left: 2%;
+  }
+
+  .gallery-section .gallery-grid::after {
+    font-size: 25px;
+    right: 2%;
+  }
+
+}
