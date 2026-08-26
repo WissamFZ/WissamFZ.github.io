@@ -1615,3 +1615,225 @@ body.site-ready .stats {
   }
 
 }
+
+/* ==========================================
+   💌 LETTER POPUP
+   ========================================== */
+
+.letter-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+
+  display: grid;
+  place-items: center;
+
+  padding: 20px;
+
+  background: rgba(55, 20, 40, .78);
+
+  backdrop-filter: blur(12px);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity .35s ease,
+    visibility .35s ease;
+}
+
+.letter-modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* The actual paper */
+
+.letter-paper {
+  position: relative;
+
+  width: min(650px, 92vw);
+  max-height: 86vh;
+
+  overflow-y: auto;
+
+  padding: 55px 55px 50px;
+
+  background:
+    linear-gradient(
+      rgba(255,255,255,.95),
+      rgba(255,247,251,.98)
+    );
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 35px 100px rgba(0,0,0,.3);
+
+  transform:
+    translateY(40px)
+    scale(.9)
+    rotate(-2deg);
+
+  transition:
+    transform .6s cubic-bezier(.16,1,.3,1);
+}
+
+.letter-modal.show .letter-paper {
+  transform:
+    translateY(0)
+    scale(1)
+    rotate(0deg);
+}
+
+
+/* Paper decoration */
+
+.letter-paper::before {
+  content: "🎀";
+
+  position: absolute;
+
+  top: -5px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  font-size: 35px;
+}
+
+
+/* Little hearts */
+
+.letter-paper::after {
+  content: "♡  ✦  ♡";
+
+  position: absolute;
+
+  bottom: 18px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  color: #ef79a8;
+
+  letter-spacing: 7px;
+  font-size: 13px;
+}
+
+
+/* Close button */
+
+.letter-close {
+  position: absolute;
+
+  top: 15px;
+  right: 18px;
+
+  width: 42px;
+  height: 42px;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: #fff0f6;
+
+  color: #70465a;
+
+  font-size: 28px;
+
+  cursor: pointer;
+
+  transition:
+    transform .25s ease,
+    background .25s ease;
+}
+
+.letter-close:hover {
+  transform: rotate(90deg) scale(1.08);
+  background: #ffe1ed;
+}
+
+
+/* Letter typography */
+
+.letter-content {
+  text-align: left;
+}
+
+.letter-eyebrow {
+  margin: 0 0 8px;
+
+  text-align: center;
+
+  color: #ef79a8;
+
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.letter-title {
+  margin: 0 0 30px;
+
+  text-align: center;
+
+  color: #70465a;
+
+  font-family:
+    "Comic Sans MS",
+    "Segoe Print",
+    cursive;
+
+  font-size: clamp(22px, 4vw, 30px);
+}
+
+.letter-message {
+  color: #654b59;
+
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.letter-message p {
+  margin: 0 0 18px;
+}
+
+.letter-message strong {
+  color: #b44e7a;
+}
+
+
+/* 📱 Mobile */
+
+@media (max-width: 600px) {
+
+  .letter-modal {
+    padding: 12px;
+  }
+
+  .letter-paper {
+    width: 100%;
+    max-height: 88vh;
+
+    padding: 48px 24px 45px;
+
+    border-radius: 12px;
+  }
+
+  .letter-message {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .letter-title {
+    margin-bottom: 24px;
+  }
+
+  .letter-close {
+    top: 10px;
+    right: 10px;
+  }
+
+}
