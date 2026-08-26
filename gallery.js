@@ -10,18 +10,18 @@ const photos = [
   },
   {
     src: "photos/princy2.jpg",
-    title: "My Favorite ♡",
-    note: "yeah... you're kinda pretty"
+    title: "That Look ♡",
+    note: "yeah… this one had me staring ♡"
   },
   {
     src: "photos/princy3.jpg",
-    title: "This One >>>",
-    note: "no explanation needed 🎀"
+    title: "Miss Attitude",
+    note: "okay miss attitude 😭♡"
   },
   {
     src: "photos/princy4.jpg",
-    title: "Pretty Girl ♡",
-    note: "how are you even real?"
+    title: "Peace ♡",
+    note: "pretty + peace sign = unfair ♡"
   },
   {
     src: "photos/princy5.jpg",
