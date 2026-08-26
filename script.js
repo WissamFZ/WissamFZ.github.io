@@ -195,3 +195,231 @@ revealElements.forEach((element) => {
 
   revealObserver.observe(element);
 });
+
+/* ==========================================
+   💌 OPEN WHEN LETTERS
+   ========================================== */
+
+const letters = {
+
+  miss: {
+    title: "Open when you miss me 💗",
+    message: `
+      <p>Hey sweetheart,</p>
+
+      <p>If you're reading this, I'm guessing you miss me.
+      Well... congratulations, we're in the same situation. 😭</p>
+
+      <p>I know sometimes I wish I could just magically appear beside you
+      instead of having a screen between us. But until teleportation gets
+      invented, I guess this little letter will have to do.</p>
+
+      <p>Just remember that no matter how far apart we are, you're still one
+      of the biggest parts of my everyday life. All those random conversations,
+      stupid jokes, late-night talks, and little moments mean more to me than
+      you probably realize.</p>
+
+      <p>So don't sit there missing me too much, okay?<br>
+      Because I'm probably somewhere missing you too.</p>
+
+      <p><strong>Come back when you miss me again. I'll still be here. ♡</strong></p>
+    `
+  },
+
+  sad: {
+    title: "Open when you're having a bad day 🌧️",
+    message: `
+      <p>Hey you,</p>
+
+      <p>First of all, I'm sorry today decided to be annoying.
+      Very rude of it, honestly. 😭</p>
+
+      <p>I don't know exactly what happened today, and I might not always
+      know the perfect thing to say, but I want you to remember something:</p>
+
+      <p><strong>You don't have to have everything figured out all the time.</strong></p>
+
+      <p>It's okay to have bad days. It's okay to feel tired.
+      It's okay if today wasn't your day.</p>
+
+      <p>And please don't forget that one bad day doesn't change how amazing you are.</p>
+
+      <p>So take a breath, drink some water, get comfortable,
+      and give yourself a little break.</p>
+
+      <p>And if nothing else works...</p>
+
+      <p>Just remember there's someone out here who thinks you're pretty damn special.
+      Unfortunately for you, that someone is me. 😭❤️</p>
+
+      <p><strong>Tomorrow can be better. And until then, I'm right here. ♡</strong></p>
+    `
+  },
+
+  sleep: {
+    title: "Open when you can't sleep 🌙",
+    message: `
+      <p>Hey sleepyhead,</p>
+
+      <p>It's probably way too late right now.</p>
+
+      <p>And knowing us, you'd probably rather be having another one of those
+      completely unnecessary late-night conversations with me instead of
+      actually sleeping. 😭</p>
+
+      <p>I honestly miss those nights sometimes. Just talking about absolutely
+      everything and absolutely nothing at the same time.</p>
+
+      <p>So if you're lying there staring at the ceiling right now,
+      here's your reminder:</p>
+
+      <p><strong>You are loved.<br>
+      You are cared about.</strong></p>
+
+      <p>And somewhere, there's a boy who is probably thinking about you
+      way too much instead of sleeping too.</p>
+
+      <p>So close your eyes, get comfortable, and pretend I'm telling you:</p>
+
+      <p><strong>"Goodnight, sweetheart. Sleep well."</strong></p>
+
+      <p>And no, you don't get to stay awake for another three hours after
+      reading this.<br>
+      <strong>Go. Sleep. 😭</strong></p>
+    `
+  },
+
+  smile: {
+    title: "Open when you need a smile 😊",
+    message: `
+      <p>Okay, first of all...</p>
+
+      <p><strong>WHY ARE YOU SAD?</strong></p>
+
+      <p>Who gave you permission?<br>
+      Who do I need to talk to? 😭</p>
+
+      <p>But seriously...</p>
+
+      <p>I hope this little letter makes you smile,
+      even if it's just for a few seconds.</p>
+
+      <p>You know what's funny? There are probably a million things I could
+      say about why I love you, but somehow my favorite things are usually
+      the tiny ones.</p>
+
+      <p>Your random messages.<br>
+      Your little reactions.<br>
+      The stupid things we laugh about.<br>
+      The way our conversations somehow turn into hours.</p>
+
+      <p>And honestly, just <strong>you being you.</strong></p>
+
+      <p>So if you're having a bad moment right now, here's your official reminder:</p>
+
+      <p><strong>You're my favorite person to annoy, talk to, miss, and love.</strong></p>
+
+      <p>Now smile.</p>
+
+      <p>Yes, I'm serious.</p>
+
+      <p>I'm watching. 👀</p>
+
+      <p>...Okay I'm not actually watching.</p>
+
+      <p><strong>But you better smile anyway. 😭❤️</strong></p>
+    `
+  }
+
+};
+
+
+/* Create the letter popup */
+
+const letterModal = document.createElement("div");
+
+letterModal.className = "letter-modal";
+
+letterModal.innerHTML = `
+  <div class="letter-paper">
+
+    <button class="letter-close" aria-label="Close letter">
+      ×
+    </button>
+
+    <div class="letter-content">
+      <p class="letter-eyebrow">a little letter for you ♡</p>
+      <h2 class="letter-title"></h2>
+      <div class="letter-message"></div>
+    </div>
+
+  </div>
+`;
+
+document.body.appendChild(letterModal);
+
+
+/* Open a letter */
+
+document.querySelectorAll(".letter-card").forEach(card => {
+
+  card.addEventListener("click", () => {
+
+    const letter = letters[card.dataset.letter];
+
+    if (!letter) return;
+
+    letterModal.querySelector(".letter-title").textContent =
+      letter.title;
+
+    letterModal.querySelector(".letter-message").innerHTML =
+      letter.message;
+
+    letterModal.classList.add("show");
+
+    document.body.style.overflow = "hidden";
+
+  });
+
+});
+
+
+/* Close letter */
+
+letterModal.querySelector(".letter-close").addEventListener("click", () => {
+
+  letterModal.classList.remove("show");
+
+  document.body.style.overflow = "";
+
+});
+
+
+/* Close when clicking outside */
+
+letterModal.addEventListener("click", event => {
+
+  if (event.target === letterModal) {
+
+    letterModal.classList.remove("show");
+
+    document.body.style.overflow = "";
+
+  }
+
+});
+
+
+/* Escape key */
+
+document.addEventListener("keydown", event => {
+
+  if (event.key === "Escape") {
+
+    letterModal.classList.remove("show");
+
+    document.body.style.overflow = "";
+
+  }
+
+});
