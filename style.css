@@ -1572,12 +1572,46 @@ body.site-ready .stats {
 
   .letters-grid {
     grid-template-columns: 1fr;
-    gap: 22px;
-    padding: 0 15px;
+    gap: 26px;
+
+    width: 100%;
+    padding: 0 18px;
+    box-sizing: border-box;
   }
 
   .letter-card {
-    min-height: 165px;
+    width: 100%;
+    min-height: 210px;
+
+    padding: 28px 20px;
+
+    border-radius: 26px;
+
+    box-sizing: border-box;
+  }
+
+  .envelope {
+    font-size: 68px;
+    margin-bottom: 5px;
+  }
+
+  .letter-card strong {
+    font-size: 19px;
+    line-height: 1.35;
+  }
+
+  .letter-card small {
+    font-size: 13px;
+  }
+
+  /* Make the cards easier to tap */
+
+  .letter-card {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .letter-card:active {
+    transform: scale(.97) rotate(0deg);
   }
 
 }
