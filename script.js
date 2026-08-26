@@ -12,10 +12,12 @@ function renderGallery(){
     return;
   }
   grid.innerHTML = photos.map((p,i)=>`
-    <article class="photo" data-index="${i}">
-      <img src="${p.src}" alt="${p.title || 'Memory'}" loading="lazy">
-      <span class="label">${p.title || '♡'}</span>
-    </article>`).join("");
+  <article class="photo visible" data-index="${i}">
+    <img src="${p.src}" alt="${p.title || 'Memory'}" loading="lazy">
+    <span class="label">${p.title || '♡'}</span>
+    ${p.note ? `<span class="memory-note">${p.note}</span>` : ""}
+  </article>
+`).join("");
 }
 renderGallery();
 
