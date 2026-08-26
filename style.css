@@ -1931,3 +1931,324 @@ body.site-ready .stats {
   }
 
 }
+
+/* ==========================================
+   💗 OUR STORY SO FAR
+   ========================================== */
+
+.timeline-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline {
+  position: relative;
+
+  max-width: 800px;
+
+  margin: 55px auto 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 30px;
+}
+
+
+/* The vertical scrapbook line */
+
+.timeline::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+  left: 31px;
+
+  width: 2px;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      #ef9abd 0 8px,
+      transparent 8px 15px
+    );
+
+  opacity: .55;
+}
+
+
+/* Memory card */
+
+.timeline article {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns: 64px 1fr;
+
+  gap: 22px;
+
+  align-items: start;
+}
+
+
+/* Number bubble */
+
+.timeline article > span {
+  position: relative;
+  z-index: 2;
+
+  width: 62px;
+  height: 62px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  border: 3px solid #f3a4c2;
+
+  color: #b85b82;
+
+  font-family:
+    "Comic Sans MS",
+    "Segoe Print",
+    cursive;
+
+  font-weight: bold;
+
+  box-shadow:
+    0 6px 15px rgba(120,50,80,.1);
+}
+
+
+/* Card itself */
+
+.timeline article > div {
+  position: relative;
+
+  padding: 25px 28px;
+
+  background: #fff;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 28px rgba(110,50,80,.09);
+
+  border: 1px solid rgba(235,150,180,.15);
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+
+/* Slight scrapbook rotation */
+
+.timeline article:nth-child(odd) > div {
+  transform: rotate(-.7deg);
+}
+
+.timeline article:nth-child(even) > div {
+  transform: rotate(.7deg);
+}
+
+.timeline article > div:hover {
+  transform:
+    translateY(-5px)
+    rotate(0deg);
+
+  box-shadow:
+    0 18px 35px rgba(110,50,80,.14);
+}
+
+
+/* Titles */
+
+.timeline article h3 {
+  margin: 0 0 10px;
+
+  color: #70465a;
+
+  font-family:
+    "Comic Sans MS",
+    "Segoe Print",
+    cursive;
+
+  font-size: 21px;
+}
+
+
+/* Main text */
+
+.timeline article p {
+  margin: 0 0 12px;
+
+  color: #684f5b;
+
+  line-height: 1.7;
+}
+
+
+/* Small handwritten detail */
+
+.timeline article small {
+  display: block;
+
+  color: #a06d83;
+
+  font-family:
+    "Comic Sans MS",
+    "Segoe Print",
+    cursive;
+
+  line-height: 1.5;
+}
+
+
+/* ==========================================
+   ✈️ FUTURE MEMORY CARDS
+   ========================================== */
+
+.timeline article.future-memory > div {
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 28px,
+      rgba(230,150,180,.09) 29px
+    ),
+    #fffdf9;
+
+  border: 2px dashed rgba(226,130,166,.35);
+
+  box-shadow:
+    0 8px 25px rgba(110,50,80,.06);
+}
+
+.timeline article.future-memory > span {
+  background: #fff7fb;
+
+  border-style: dashed;
+}
+
+.timeline article.future-memory h3 {
+  color: #b35b80;
+}
+
+
+/* ==========================================
+   💗 ENDING MESSAGE
+   ========================================== */
+
+.story-ending {
+  max-width: 650px;
+
+  margin: 90px auto 20px;
+
+  text-align: center;
+
+  padding: 45px 30px;
+
+  background: rgba(255,245,249,.8);
+
+  border-radius: 25px;
+
+  border: 2px dashed rgba(226,130,166,.3);
+}
+
+.story-ending p {
+  color: #765464;
+
+  line-height: 1.8;
+
+  margin: 0 0 15px;
+}
+
+.story-ending h3 {
+  margin: 5px 0 18px;
+
+  color: #b34f78;
+
+  font-family:
+    "Comic Sans MS",
+    "Segoe Print",
+    cursive;
+
+  font-size: 26px;
+}
+
+.story-ending strong {
+  display: block;
+
+  margin-top: 25px;
+
+  color: #70465a;
+
+  line-height: 1.8;
+}
+
+
+/* ==========================================
+   📱 MOBILE
+   ========================================== */
+
+@media (max-width: 600px) {
+
+  .timeline {
+    margin-top: 40px;
+
+    padding: 0 12px;
+
+    gap: 25px;
+  }
+
+  .timeline::before {
+    left: 25px;
+  }
+
+  .timeline article {
+    grid-template-columns: 50px 1fr;
+
+    gap: 15px;
+  }
+
+  .timeline article > span {
+    width: 48px;
+    height: 48px;
+
+    font-size: 13px;
+  }
+
+  .timeline article > div {
+    padding: 20px 18px;
+  }
+
+  .timeline article h3 {
+    font-size: 18px;
+  }
+
+  .timeline article p {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .timeline article small {
+    font-size: 12px;
+  }
+
+  .story-ending {
+    margin: 65px 15px 15px;
+
+    padding: 35px 22px;
+  }
+
+  .story-ending h3 {
+    font-size: 22px;
+  }
+
+}
