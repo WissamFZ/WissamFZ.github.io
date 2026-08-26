@@ -3,8 +3,9 @@
 // { src: "photos/princy1.jpg", title: "pretty girl ♡" }
 
 const photos = [
-   {
+  {
     src: "photos/princy1.jpg",
-    title: "Prettiest Eyes ♡"
+    title: "Prettiest Eyes ♡",
+    note: "okay but those eyes?? ♡"
   }
 ];
