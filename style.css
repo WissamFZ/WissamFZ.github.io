@@ -1406,3 +1406,178 @@ body.site-ready .stats {
   }
 
 }
+
+/* ==========================================
+   💌 OPEN WHEN LETTERS
+   ========================================== */
+
+.open-when-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.open-when-section::before {
+  content: "♡";
+  position: absolute;
+  top: 40px;
+  left: 7%;
+
+  font-size: 45px;
+  color: rgba(255, 126, 174, .25);
+
+  animation: letterFloat 4s ease-in-out infinite;
+}
+
+.open-when-section::after {
+  content: "✦";
+  position: absolute;
+  right: 8%;
+  bottom: 40px;
+
+  font-size: 32px;
+  color: rgba(255, 126, 174, .3);
+
+  animation: letterSparkle 2.5s ease-in-out infinite;
+}
+
+.letters-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+
+  max-width: 850px;
+  margin: 40px auto 0;
+}
+
+.letter-card {
+  position: relative;
+
+  min-height: 190px;
+  padding: 30px 25px;
+
+  border: 0;
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fffafa,
+      #fff0f6
+    );
+
+  box-shadow:
+    0 12px 30px rgba(110, 50, 80, .10);
+
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  color: #70465a;
+
+  transition:
+    transform .35s cubic-bezier(.16,1,.3,1),
+    box-shadow .35s ease;
+}
+
+.letter-card:nth-child(1) {
+  transform: rotate(-1.5deg);
+}
+
+.letter-card:nth-child(2) {
+  transform: rotate(1.5deg);
+}
+
+.letter-card:nth-child(3) {
+  transform: rotate(1deg);
+}
+
+.letter-card:nth-child(4) {
+  transform: rotate(-1deg);
+}
+
+.letter-card:hover {
+  transform:
+    translateY(-10px)
+    rotate(0deg)
+    scale(1.025);
+
+  box-shadow:
+    0 22px 45px rgba(110, 50, 80, .17);
+}
+
+.envelope {
+  font-size: 52px;
+
+  display: block;
+
+  transition:
+    transform .35s cubic-bezier(.16,1,.3,1);
+}
+
+.letter-card:hover .envelope {
+  transform:
+    translateY(-6px)
+    rotate(-6deg)
+    scale(1.1);
+}
+
+.letter-card strong {
+  font-family:
+    "Comic Sans MS",
+    "Segoe Print",
+    cursive;
+
+  font-size: 18px;
+}
+
+.letter-card small {
+  font-size: 12px;
+  opacity: .65;
+}
+
+
+/* Floating decorations */
+
+@keyframes letterFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(-10deg);
+  }
+
+  50% {
+    transform: translateY(-9px) rotate(5deg);
+  }
+}
+
+@keyframes letterSparkle {
+  0%, 100% {
+    opacity: .3;
+    transform: scale(.8) rotate(0);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.2) rotate(20deg);
+  }
+}
+
+
+/* 📱 Mobile */
+
+@media (max-width: 600px) {
+
+  .letters-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+    padding: 0 15px;
+  }
+
+  .letter-card {
+    min-height: 165px;
+  }
+
+}
