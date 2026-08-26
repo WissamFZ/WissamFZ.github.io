@@ -1292,3 +1292,117 @@ body.site-ready .stats {
   }
 
 }
+/* ==========================================
+   ✍️ HANDWRITTEN SCRAPBOOK NOTES
+   ========================================== */
+
+.memory-note {
+  position: absolute;
+
+  z-index: 6;
+
+  right: -42px;
+  bottom: -28px;
+
+  width: 145px;
+  min-height: 70px;
+
+  padding: 14px 12px;
+
+  display: grid;
+  place-items: center;
+
+  text-align: center;
+
+  font-family:
+    "Comic Sans MS",
+    "Segoe Print",
+    cursive;
+
+  font-size: 13px;
+  line-height: 1.35;
+
+  color: #765064;
+
+  background: #fff9c9;
+
+  box-shadow:
+    0 8px 18px rgba(100, 50, 70, .13);
+
+  transform: rotate(4deg);
+
+  transition:
+    transform .3s ease,
+    box-shadow .3s ease;
+}
+
+/* Little piece of tape holding the note */
+
+.memory-note::before {
+  content: "";
+
+  position: absolute;
+
+  width: 48px;
+  height: 14px;
+
+  top: -8px;
+  left: 50%;
+
+  transform:
+    translateX(-50%)
+    rotate(-3deg);
+
+  background: rgba(255, 182, 209, .7);
+}
+
+/* Make it react when the photo is hovered */
+
+.photo:hover .memory-note {
+  transform:
+    rotate(-2deg)
+    translateY(-5px)
+    scale(1.05);
+
+  box-shadow:
+    0 12px 25px rgba(100, 50, 70, .18);
+}
+
+/* Different positions for future photos */
+
+.photo:nth-child(2) .memory-note {
+  left: -42px;
+  right: auto;
+  transform: rotate(-4deg);
+}
+
+.photo:nth-child(3) .memory-note {
+  right: -35px;
+  bottom: -32px;
+  transform: rotate(3deg);
+}
+
+.photo:nth-child(4) .memory-note {
+  left: -40px;
+  right: auto;
+  transform: rotate(-3deg);
+}
+
+/* 📱 Keep notes inside the screen on phones */
+
+@media (max-width: 600px) {
+
+  .memory-note {
+    right: -5px;
+    bottom: -25px;
+    width: 130px;
+    font-size: 12px;
+  }
+
+  .photo:nth-child(2) .memory-note,
+  .photo:nth-child(4) .memory-note {
+    left: auto;
+    right: -5px;
+  }
+
+}
