@@ -423,3 +423,47 @@ document.addEventListener("keydown", event => {
   }
 
 });
+
+/* ==========================================
+   ✨ SCRAPBOOK SCROLL SPARKLES
+   ========================================== */
+
+let sparkleCooldown = false;
+
+window.addEventListener("scroll", () => {
+
+  if (sparkleCooldown) return;
+
+  sparkleCooldown = true;
+
+  setTimeout(() => {
+    sparkleCooldown = false;
+  }, 120);
+
+  createScrollSparkle();
+
+});
+
+
+function createScrollSparkle() {
+
+  const sparkle = document.createElement("span");
+
+  sparkle.className = "scroll-sparkle";
+
+  sparkle.textContent =
+    Math.random() > .5 ? "✦" : "♡";
+
+  sparkle.style.left =
+    Math.random() * 90 + 5 + "%";
+
+  sparkle.style.top =
+    Math.random() * 80 + 10 + "%";
+
+  document.body.appendChild(sparkle);
+
+  setTimeout(() => {
+    sparkle.remove();
+  }, 900);
+
+}
