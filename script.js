@@ -467,3 +467,56 @@ function createScrollSparkle() {
   }, 900);
 
 }
+
+/* ==========================================
+   💗 FINAL SURPRISE MESSAGE
+   ========================================== */
+
+const finalOpen = document.getElementById("finalOpen");
+
+if (finalOpen) {
+
+  finalOpen.addEventListener("click", () => {
+
+    finalOpen.parentElement.innerHTML = `
+      <p class="eyebrow">for you, sweetheart ♡</p>
+
+      <h2>I'm really glad it's you.</h2>
+
+      <div class="final-message">
+
+        <p>
+          If you made it this far, I guess you really went through
+          my entire little corner of the internet dedicated to you. 😭
+        </p>
+
+        <p>
+          I could've filled this whole thing with a hundred pictures
+          and a thousand words, but somehow none of them would really
+          explain how much you mean to me.
+        </p>
+
+        <p>
+          There are still so many things we haven't done,
+          places we haven't been, and memories we haven't made yet.
+        </p>
+
+        <p>
+          And honestly...
+          <strong>I'm really glad.</strong>
+        </p>
+
+        <p>
+          Because it means we still have so much left to write.
+        </p>
+
+        <p class="final-love">
+          I'm really glad it's you. ♡
+        </p>
+
+      </div>
+    `;
+
+  });
+
+}
