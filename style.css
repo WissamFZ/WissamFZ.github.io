@@ -2252,3 +2252,130 @@ body.site-ready .stats {
   }
 
 }
+
+/* ==========================================
+   🎀 FLOATING SCRAPBOOK DECORATIONS
+   ========================================== */
+
+.floating-decorations {
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+  z-index: 20;
+
+  overflow: hidden;
+}
+
+.floating-decorations span {
+  position: absolute;
+
+  font-size: 22px;
+
+  opacity: .22;
+
+  animation:
+    decorationFloat
+    var(--float-time)
+    ease-in-out
+    infinite;
+
+  animation-delay: var(--float-delay);
+
+  filter:
+    drop-shadow(0 3px 4px rgba(100,40,70,.08));
+}
+
+
+/* Individual positions */
+
+.floating-decorations span:nth-child(1) {
+  left: 5%;
+  top: 18%;
+
+  --float-time: 5s;
+  --float-delay: 0s;
+
+  font-size: 28px;
+}
+
+.floating-decorations span:nth-child(2) {
+  left: 92%;
+  top: 30%;
+
+  --float-time: 6s;
+  --float-delay: 1s;
+}
+
+.floating-decorations span:nth-child(3) {
+  left: 8%;
+  top: 65%;
+
+  --float-time: 4.5s;
+  --float-delay: .5s;
+
+  font-size: 18px;
+}
+
+.floating-decorations span:nth-child(4) {
+  left: 88%;
+  top: 72%;
+
+  --float-time: 5.5s;
+  --float-delay: 2s;
+
+  font-size: 27px;
+}
+
+.floating-decorations span:nth-child(5) {
+  left: 48%;
+  top: 10%;
+
+  --float-time: 7s;
+  --float-delay: 1.5s;
+
+  font-size: 20px;
+}
+
+.floating-decorations span:nth-child(6) {
+  left: 94%;
+  top: 88%;
+
+  --float-time: 4s;
+  --float-delay: 2.5s;
+}
+
+
+/* Floating movement */
+
+@keyframes decorationFloat {
+
+  0%, 100% {
+    transform:
+      translateY(0)
+      rotate(-5deg);
+  }
+
+  50% {
+    transform:
+      translateY(-15px)
+      rotate(7deg);
+  }
+
+}
+
+
+/* Don't clutter small screens */
+
+@media (max-width: 600px) {
+
+  .floating-decorations span {
+    opacity: .15;
+  }
+
+  .floating-decorations span:nth-child(1),
+  .floating-decorations span:nth-child(5) {
+    display: none;
+  }
+
+}
